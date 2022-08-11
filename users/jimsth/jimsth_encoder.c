@@ -1,6 +1,6 @@
-
 /* Copyright 2021 Jonavin Eng @Jonavin
-
+   Copyright 2022 gourdo1 <gourdo1@outlook.com>
+   
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or
@@ -15,8 +15,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 #include QMK_KEYBOARD_H
+
 #include "jimsth.h"
 
 #ifdef ENCODER_ENABLE
@@ -27,13 +27,32 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         #define ENCODER_DEFAULTACTIONS_INDEX 0  // can select encoder index if there are multiple encoders
     #endif
 
-    void encoder_action_volume(bool clockwise) {
-        if (clockwise)
-            tap_code(KC_VOLU);
-        else
-            tap_code(KC_VOLD);
-    }
+    static uint16_t key_timer;
 
+    void encoder_action_volume(bool clockwise) {
+        if (clockwise) {
+            tap_code(KC_VOLU);
+            if (timer_elapsed(key_timer) < 50) {
+              tap_code(KC_VOLU); // if less than 50ms have passed, hit vol up again.
+              key_timer = timer_read();
+            } else {
+              key_timer = timer_read();
+              // do nothing if 50ms or more have passed
+            }
+        }
+        else {
+            tap_code(KC_VOLD);
+            if (timer_elapsed(key_timer) < 100) {
+              tap_code(KC_VOLD); // if less than 100ms have passed, hit vol down twice.
+              tap_code(KC_VOLD);
+              key_timer = timer_read();
+            } else {
+              key_timer = timer_read();
+              // do nothing if 100ms or more have passed
+            }
+        }
+    }
+	
     void encoder_action_mediatrack(bool clockwise) {
         if (clockwise)
             tap_code(KC_MEDIA_NEXT_TRACK);
@@ -215,4 +234,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         return false;
     }
 #endif // ENCODER_ENABLE
+
 
