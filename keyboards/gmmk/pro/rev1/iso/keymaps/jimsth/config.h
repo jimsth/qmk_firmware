@@ -24,7 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define WEAR_LEVELING_BACKING_SIZE 2560             //default 2048    Number of bytes used by the wear-leveling algorithm for its underlying storage, and needs to be a multiple of the logical size.
 
 // Enable n-key rollover by default
-#define NKRO_DEFAULT_ON
+#define NKRO_DEFAULT_ON true
 
 // Set keyboard debounce time (originally 5ms, now 8ms to combat touchy switches)
 #define DEBOUNCE 8
@@ -62,9 +62,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     // Startup values, when none have been set
     #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_REACTIVE // Sets the default effect mode, if none has been set (was RGB_MATRIX_SOLID_COLOR)
-    #define RGB_MATRIX_DEFAULT_HUE 24                         // Sets the default hue value, if none has been set
+    #define RGB_MATRIX_DEFAULT_HUE 188                         // Sets the default hue value, if none has been set
     #define RGB_MATRIX_DEFAULT_SAT 255                        // Sets the default saturation value, if none has been set
-    #define RGB_MATRIX_DEFAULT_VAL 127                        // Sets the default brightness value, if none has been set
+    #define RGB_MATRIX_DEFAULT_VAL 255                        // Sets the default brightness value, if none has been set
     #define RGB_MATRIX_DEFAULT_SPD 127                        // Sets the default animation speed, if none has been set
 
     // Uncomment any #undef line below to turn OFF any default enabled RGB background effect (enabled in keyboards/gmmk/pro/config.h).
