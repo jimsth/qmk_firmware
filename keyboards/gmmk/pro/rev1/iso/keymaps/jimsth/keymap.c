@@ -296,12 +296,12 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     if (led_state.caps_lock) {
         if (user_config.rgb_hilite_caps) {
             if (user_config.rgb_english_caps) {
-                for (uint8_t i = 0; i < ARRAYSIZE(LED_LIST_LETTERS); i++) {
+                for (uint8_t i = 0; i < ARRAY_SIZE(LED_LIST_LETTERS); i++) {
                     rgb_matrix_set_color(LED_LIST_LETTERS[i], RGB_CHARTREUSE);
                 }
             }
             else {
-                for (uint8_t i = 0; i < ARRAYSIZE(LED_LIST_LETTERS_DE); i++) {
+                for (uint8_t i = 0; i < ARRAY_SIZE(LED_LIST_LETTERS_DE); i++) {
                     rgb_matrix_set_color(LED_LIST_LETTERS_DE[i], RGB_CHARTREUSE);
                 }
             }
@@ -343,7 +343,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         rgb_matrix_set_color(LED_FN, RGB_RED); //FN key
 
         //NEW RGB LIGHTING TO RING KEYBOARD ON FN LAYER ACTIVATION:
-        for (uint8_t j = 0; j < ARRAYSIZE(LED_LIST_FUNCROW); j++) {
+        for (uint8_t j = 0; j < ARRAY_SIZE(LED_LIST_FUNCROW); j++) {
             rgb_matrix_set_color(LED_LIST_FUNCROW[j], RGB_RED);
         }
         rgb_matrix_set_color(LED_LCTL, RGB_RED);
@@ -384,12 +384,12 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         #endif // GAME_ENABLE
 
         // System NumLock warning indicator RGB setup
-        #ifdef INVERT_NUMLOCK_INDICATOR 
-        if (!led_state.num_lock) {  // on if NUM lock is OFF to bring attention to overlay numpad not functional when enabled
+        #ifdef INVERT_NUMLOCK_INDICATOR
+        if (!led_state.num_lock) { // on if NUM lock is OFF to bring attention to overlay numpad not functional when enabled
             rgb_matrix_set_color(LED_N, RGB_ORANGE2);
         }
         #else
-        if (led_state.num_lock) {  // Normal, on if NUM lock is ON
+        if (led_state.num_lock) { // Normal, on if NUM lock is ON
             rgb_matrix_set_color(LED_N, RGB_ORANGE2);
         }
         #endif // INVERT_NUMLOCK_INDICATOR
@@ -460,7 +460,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 
         // Numpad & Mouse Keys overlay RGB
     case _NUMPADMOUSE:
-        #ifdef INVERT_NUMLOCK_INDICATOR 
+        #ifdef INVERT_NUMLOCK_INDICATOR
         if (!led_state.num_lock) { // on if NUM lock is OFF to bring attention to overlay numpad not functional when enabled
             rgb_matrix_set_color(LED_N, RGB_ORANGE2);
         }
@@ -470,7 +470,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         }
         #endif // INVERT_NUMLOCK_INDICATOR
         if (user_config.rgb_hilite_numpad) {
-            for (uint8_t i = 0; i < ARRAYSIZE(LED_LIST_NUMPAD); i++) {
+            for (uint8_t i = 0; i < ARRAY_SIZE(LED_LIST_NUMPAD); i++) {
                 rgb_matrix_set_color(LED_LIST_NUMPAD[i], RGB_OFFBLUE);
             }
             rgb_matrix_set_color(LED_L5, RGB_OFFBLUE);
@@ -512,7 +512,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         // Colemak layer RGB
         #ifdef COLEMAK_LAYER_ENABLE
     case _COLEMAK:
-        for (uint8_t i = 0; i < ARRAYSIZE(LED_SIDE_RIGHT); i++) {
+        for (uint8_t i = 0; i < ARRAY_SIZE(LED_SIDE_RIGHT); i++) {
             rgb_matrix_set_color(LED_SIDE_RIGHT[i], RGB_MAGENTA);
             rgb_matrix_set_color(LED_SIDE_LEFT[i], RGB_MAGENTA);
         }

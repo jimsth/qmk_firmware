@@ -222,7 +222,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t * record) {
             eeconfig_update_user(user_config.raw); // Writes the new status to EEPROM
         }
         break;
-    case TG_INS:  // Toggle Encoder function
+    case TG_INS:  // Togle Insert function accessed with SHIFT-BKSPC OR SHIFT-DEL
         if (record->event.pressed) {
             user_config.ins_on_shft_bkspc_or_del ^= 1; // Toggles the status
             eeconfig_update_user(user_config.raw); // Writes the new status to EEPROM
@@ -358,12 +358,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t * record) {
     case ENCFUNC:
         if (user_config.encoder_press_mute_or_media) {
             if (record -> event.pressed) {
-                register_code(KC_MUTE);
+                tap_code(KC_MUTE);
             } else unregister_code16(keycode);
         }
         else {
             if (record -> event.pressed) {
-                register_code(KC_MPLY);
+                tap_code(KC_MPLY);
             } else unregister_code16(keycode);
         }
         break;
@@ -412,7 +412,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t * record) {
         } else unregister_code16(keycode);
         break;
 
-        // Double Zero    
+        // Double Zero
     case KC_00:
         if (record -> event.pressed) {
             // when keycode KC_00 is pressed
