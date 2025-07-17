@@ -258,7 +258,7 @@ void hurt_paddle(void) {
 #endif //GAME_ENABLE
 
 // Capslock, Scroll lock and Numlock indicator on Left side lights.
-void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     if (get_rgb_nightmode()) rgb_matrix_set_color_all(RGB_OFF);
 	
 	 led_t led_state = host_keyboard_led_state();
