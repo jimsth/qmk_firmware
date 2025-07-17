@@ -23,8 +23,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define WEAR_LEVELING_LOGICAL_SIZE 1280             //default 1024    Number of bytes “exposed” to the rest of QMK and denotes the size of the usable EEPROM.
 #define WEAR_LEVELING_BACKING_SIZE 2560             //default 2048    Number of bytes used by the wear-leveling algorithm for its underlying storage, and needs to be a multiple of the logical size.
 
-// Force n-key rollover
-#define FORCE_NKRO
+// Enable n-key rollover by default
+#define NKRO_DEFAULT_ON
 
 // Set keyboard debounce time (originally 5ms, now 8ms to combat touchy switches)
 #define DEBOUNCE 8
